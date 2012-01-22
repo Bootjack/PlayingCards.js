@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="" />
+<meta http-equiv="keywords" content="" />
+
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/playingcards.js"></script>
+<script type="text/javascript" src="js/card.js"></script>
+<script type="text/javascript" src="js/deck.js"></script>
+
+<title>CoffeeScript Playing Cards</title>
+
+</head>
+<body>
+
+<hgroup>
+<h1>Playing Card Demo</h1> 
+<h2>Written in CoffeeScript</h2>
+</hgroup>
+
+<div id="coffeeOutput"></div>
+
+<script type="text/javascript">
+var d = new Deck();
+var p1 = {};
+var p2 = {};
+var p3 = {};
+var p4 = {};
+
+d.shuffle();
+d.deal(p1, 5);
+d.deal(p2, 5);
+d.deal(p3, 5);
+d.deal(p4, 5);
+
+var p1Hand = new Element('ul');
+var p2Hand = new Element('ul');
+var p3Hand = new Element('ul');
+var p4Hand = new Element('ul');
+
+for (i=0; i<5; i++) {
+	p1Hand.insert({'bottom': new Element('li').update(d.draw(p1)[i].identify())});
+	p2Hand.insert({'bottom': new Element('li').update(d.draw(p2)[i].identify())});
+	p3Hand.insert({'bottom': new Element('li').update(d.draw(p3)[i].identify())});
+	p4Hand.insert({'bottom': new Element('li').update(d.draw(p4)[i].identify())});
+}
+
+$('coffeeOutput').insert({
+	'bottom': p1Hand
+}).insert({
+	'bottom': p2Hand
+}).insert({
+	'bottom': p3Hand
+}).insert({
+	'bottom': p4Hand
+});
+
+</script>
+
+</body>
+</html>
